@@ -100,7 +100,7 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="➗Call Me To Your Group Onii-Chan➗", url="t.me/ShiroRobot?startgroup=new"),
+            text="➗ Call Me To Your Group Onii-Chan ➗", url="t.me/ShiroRobot?startgroup=new"),
     ],
 ]
 
