@@ -296,6 +296,7 @@ __help__ = """ This is help menu for logomaker
 
 ❂ /logo <text/name> - Create a logo with random view.
 ❂ /wlogo <text/name> - Create a logo with wide view only.
+❂ /slogo <text/name> - Buat logo pake foto cewek
 
  Image Editor :
 
