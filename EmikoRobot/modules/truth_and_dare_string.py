@@ -44,6 +44,7 @@ TRUTH = (
    "Apakah kamu pernah melakukan ghosting?",
    "Apa aib yang kamu sembunyikan dari kami?",
    "Berapa jumlah mantanmu?",
+)
 
 DARE = (
     "Ambil nomor secara acak dari kontakmu, telepon dia, dan bilang Aku mencintaimu",
