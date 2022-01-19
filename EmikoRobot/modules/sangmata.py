@@ -8,20 +8,20 @@ from asyncio.exceptions import TimeoutError
 @register(pattern="^/sg ?(.*)")
 async def lastname(steal):
     steal.pattern_match.group(1)
-    puki = await steal.reply("```Retrieving Such User Information..```")
+    puki = await steal.reply("```Lo saha sih ane kepo, kalau gk terima pc..```")
     if steal.fwd_from:
         return
     if not steal.reply_to_msg_id:
-        await puki.edit("```Please Reply To User Message.```")
+        await puki.edit("```Reply dulu chat baru bisa😑.```")
         return
     message = await steal.get_reply_message()
     chat = "@SangMataInfo_bot"
     user_id = message.sender.id
     id = f"/search_id {user_id}"
     if message.sender.bot:
-        await puki.edit("```Reply To Real User's Message.```")
+        await puki.edit("```Reply dulu chat baru bisa😑 Akun asli ye bukan akun CH atau Anonim.```")
         return
-    await puki.edit("```Please wait...```")
+    await puki.edit("```Sabar ye nyet...```")
     try:
         async with ubot.conversation(chat) as conv:
             try:
@@ -30,7 +30,7 @@ async def lastname(steal):
                 response = await conv.get_response()
             except YouBlockedUserError:
                 await steal.reply(
-                    "```Error, report to @kenbotsupport```"
+                    "```Error, melapor kepada @ShiroSupport```"
                 )
                 return
             if r.text.startswith("Name"):
@@ -43,7 +43,7 @@ async def lastname(steal):
             if response.text.startswith("No records") or r.text.startswith(
                 "No records"
             ):
-                await puki.edit("```I Can't Find This User's Information, This User Has Never Changed His Name Before.```")
+                await puki.edit("```Wah ni orang belum pernah ganti namanya bisa²nya😑.```")
                 await ubot.delete_messages(
                     conv.chat_id, [msg.id, r.id, response.id]
                 )
@@ -55,7 +55,7 @@ async def lastname(steal):
                 conv.chat_id, [msg.id, r.id, response.id, respond.id]
             )
     except TimeoutError:
-        return await puki.edit("`I'm Sick Sorry...`")
+        return await puki.edit("`Sorry Onii-Chan, Hiks² saya lagi sakit...`")
 
 
 
