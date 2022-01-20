@@ -19,7 +19,9 @@ async def lastname(steal):
     user_id = message.sender.id
     id = f"/search_id {user_id}"
     if message.sender.bot:
-        await puki.edit("```Reply dulu chat baru bisa😑 Akun asli ye bukan akun CH atau Anonim.```")
+        await puki.edit(
+            "```Reply dulu chat baru bisa😑 Akun asli ye bukan akun CH atau Anonim.```"
+        )
         return
     await puki.edit("```Sabar ye nyet...```")
     try:
@@ -29,24 +31,22 @@ async def lastname(steal):
                 r = await conv.get_response()
                 response = await conv.get_response()
             except YouBlockedUserError:
-                await steal.reply(
-                    "```Error, melapor kepada @ShiroSupport```"
-                )
+                await steal.reply("```Error, melapor kepada @ShiroSupport```")
                 return
             if r.text.startswith("Name"):
                 respond = await conv.get_response()
                 await puki.edit(f"`{r.message}`")
                 await ubot.delete_messages(
                     conv.chat_id, [msg.id, r.id, response.id, respond.id]
-                ) 
+                )
                 return
             if response.text.startswith("No records") or r.text.startswith(
                 "No records"
             ):
-                await puki.edit("```Wah ni orang belum pernah ganti namanya bisa²nya😑.```")
-                await ubot.delete_messages(
-                    conv.chat_id, [msg.id, r.id, response.id]
+                await puki.edit(
+                    "```Wah ni orang belum pernah ganti namanya bisa²nya😑.```"
                 )
+                await ubot.delete_messages(conv.chat_id, [msg.id, r.id, response.id])
                 return
             else:
                 respond = await conv.get_response()
@@ -56,7 +56,6 @@ async def lastname(steal):
             )
     except TimeoutError:
         return await puki.edit("`Sorry Onii-Chan, Hiks² saya lagi sakit...`")
-
 
 
 @register(pattern="^/quotly ?(.*)")
@@ -81,15 +80,18 @@ async def quotess(qotli):
                 """ - don't spam notif - """
                 await ubot.send_read_acknowledge(conv.chat_id)
             except YouBlockedUserError:
-                return await qotli.edit("```Harap Jangan Blockir @QuotLyBot Buka Blokir Lalu Coba Lagi```")
+                return await qotli.edit(
+                    "```Harap Jangan Blockir @QuotLyBot Buka Blokir Lalu Coba Lagi```"
+                )
             if response.text.startswith("Hi!"):
-                await qotli.edit("```Mohon Menonaktifkan Pengaturan Privasi Forward Anda```")
+                await qotli.edit(
+                    "```Mohon Menonaktifkan Pengaturan Privasi Forward Anda```"
+                )
             else:
                 await qotli.delete()
                 await tbot.send_message(qotli.chat_id, response.message)
                 await tbot.send_read_acknowledge(qotli.chat_id)
                 """ - cleanup chat after completed - """
-                await ubot.delete_messages(conv.chat_id,
-                                              [msg.id, response.id])
+                await ubot.delete_messages(conv.chat_id, [msg.id, response.id])
     except TimeoutError:
         await qotli.edit()
